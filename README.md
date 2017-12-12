@@ -23,8 +23,6 @@ import mojolly.inflector.InflectorImports._ // this is also a trait
 
 ## Downloading
 
-This library is published to maven-central.
-
 ```scala
 resolvers += Resolver.bintrayRepo("bondlink", "scala-inflector")
 libraryDependencies += "bondlink" %% "scala-inflector" % "1.3.6"
