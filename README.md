@@ -25,7 +25,7 @@ import mojolly.inflector.InflectorImports._ // this is also a trait
 
 ```scala
 resolvers += Resolver.bintrayRepo("bondlink", "scala-inflector")
-libraryDependencies += "bondlink" %% "scala-inflector" % "1.3.6"
+libraryDependencies += "bondlink" %% "scala-inflector" % "1.3.7"
 ```
 
 ## Patches
