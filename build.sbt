@@ -1,21 +1,17 @@
 import scala.xml._
 
+onChangedBuildSource in Global := ReloadOnSourceChanges
+
 name := "scala-inflector"
 
-version := "1.3.8"
+version := "1.3.9"
 
 organization := "bondlink"
 
-scalaVersion := "2.12.4"
+scalaVersion := "2.13.1"
 crossScalaVersions := Seq("2.11.12", "2.12.11", "2.13.1")
 
 crossVersion := CrossVersion.binary
-
-scalacOptions ++= Seq("-feature", "-unchecked", "-deprecation", "-Xcheckinit", "-encoding", "utf8")
-
-scalacOptions := scalacOptions.value :+ Option(scalaVersion.value).filter(_.startsWith("2.12"))
-  .map(v => "-opt:l:method")
-  .getOrElse("-optimize")
 
 libraryDependencies += "org.specs2" %% "specs2-core" % "4.9.2" % "test"
 

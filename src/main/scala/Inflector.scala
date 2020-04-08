@@ -3,7 +3,6 @@ package mojolly.inflector
 import java.util.Locale.ENGLISH
 import scala.Some
 import annotation.tailrec
-import scala.language.implicitConversions
 import scala.util.matching.Regex
 
 trait Inflector {
@@ -93,9 +92,9 @@ trait Inflector {
   private var singulars = List[Rule]()
   private var uncountables = List[String]()
 
-  def addPlural(pattern: String, replacement: String) { plurals ::= pattern -> replacement }
-  def addSingular(pattern: String, replacement: String) { singulars ::= pattern -> replacement }
-  def addIrregular(singular: String, plural: String) {
+  def addPlural(pattern: String, replacement: String): Unit = { plurals ::= pattern -> replacement }
+  def addSingular(pattern: String, replacement: String): Unit = { singulars ::= pattern -> replacement }
+  def addIrregular(singular: String, plural: String): Unit = {
     plurals ::= (("(" + singular(0) + ")" + singular.slice(1, singular.length) + "$") -> ("$1" + plural.slice(1, plural.length)))
     singulars ::= (("(" + plural(0) + ")" + plural.slice(1, plural.length) + "$") -> ("$1" + singular.slice(1, singular.length)))
   }
