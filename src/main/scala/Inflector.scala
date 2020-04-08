@@ -17,11 +17,11 @@ trait Inflector {
   }
   def pascalize(word: String): String = {
     word.split('_').toList.filterNot(_.isEmpty) match {
-      case Nil ⇒ ""
-      case h :: t ⇒ (
+      case Nil => ""
+      case h :: t => (
           h.take(1).toUpperCase(ENGLISH) ::
           h.slice(1, h.length) ::
-          t.map(s ⇒ s.take(1).toUpperCase + s.slice(1, s.length))
+          t.map(s => s.take(1).toUpperCase + s.slice(1, s.length))
         ).mkString("")
     }
   }
@@ -47,10 +47,10 @@ trait Inflector {
     if (nMod100 >= 11 && nMod100 <= 13) numberString + "th"
     else {
       (number % 10) match {
-        case 1 ⇒ numberString + "st"
-        case 2 ⇒ numberString + "nd"
-        case 3 ⇒ numberString + "rd"
-        case _ ⇒ numberString + "th"
+        case 1 => numberString + "st"
+        case 2 => numberString + "nd"
+        case 3 => numberString + "rd"
+        case _ => numberString + "th"
       }
     }
   }
@@ -103,7 +103,7 @@ trait Inflector {
 
   def interpolate(text: String, vars: Map[String, String]) =
     """\#\{([^}]+)\}""".r.replaceAllIn(text, (_: Regex.Match) match {
-      case Regex.Groups(v) ⇒ vars.getOrElse(v, "")
+      case Regex.Groups(v) => vars.getOrElse(v, "")
     })
 
 }

@@ -2,12 +2,12 @@ import scala.xml._
 
 name := "scala-inflector"
 
-version := "1.3.7"
+version := "1.3.8"
 
 organization := "bondlink"
 
 scalaVersion := "2.12.4"
-crossScalaVersions := Seq("2.11.11", "2.12.4")
+crossScalaVersions := Seq("2.11.12", "2.12.11", "2.13.1")
 
 crossVersion := CrossVersion.binary
 
@@ -17,12 +17,7 @@ scalacOptions := scalacOptions.value :+ Option(scalaVersion.value).filter(_.star
   .map(v => "-opt:l:method")
   .getOrElse("-optimize")
 
-libraryDependencies ++= {
-  CrossVersion.partialVersion(scalaVersion.value) match {
-    case Some((2, scalaMajor)) if scalaMajor == 11 => Seq("org.specs2" %% "specs2" % "2.3.11" % "test")
-    case _ => Seq("org.specs2" %% "specs2-core" % "3.9.5" % "test")
-  }
-}
+libraryDependencies += "org.specs2" %% "specs2-core" % "4.9.2" % "test"
 
 libraryDependencies ++= Seq(
   // compilerPlugin("org.scala-tools.sxr" % "sxr_2.9.0" % "0.2.7"),

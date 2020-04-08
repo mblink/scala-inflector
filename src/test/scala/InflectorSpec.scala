@@ -25,7 +25,7 @@ class InflectorSpec extends Specification with DataTables {
       "some_title" !! "some-title" |
       "some-title" !! "some-title" |
       "some_title_goes_here" !! "some-title-goes-here" |
-      "some_title_and_another" !! "some-title-and-another" |> { (src, tgt) ⇒
+      "some_title_and_another" !! "some-title-and-another" |> { (src, tgt) =>
         Inflector.dasherize(src) must_== tgt
       }
   }
@@ -36,7 +36,7 @@ class InflectorSpec extends Specification with DataTables {
       "some_title" !! "Some title" |
       "some-title" !! "Some-title" |
       "someTitle" !! "Sometitle" |
-      "someTitle_Another" !! "Sometitle another" |> { (src, tgt) ⇒
+      "someTitle_Another" !! "Sometitle another" |> { (src, tgt) =>
         Inflector.humanize(src) must_== tgt
       }
   }
@@ -70,7 +70,7 @@ class InflectorSpec extends Specification with DataTables {
       "104" !! "104th" |
       "110" !! "110th" |
       "1000" !! "1000th" |
-      "1001" !! "1001st" |> { (src, tgt) ⇒
+      "1001" !! "1001st" |> { (src, tgt) =>
         Inflector.ordinalize(src) must_== tgt
       }
   }
@@ -104,7 +104,7 @@ class InflectorSpec extends Specification with DataTables {
       104 !! "104th" |
       110 !! "110th" |
       1000 !! "1000th" |
-      1001 !! "1001st" |> { (src, tgt) ⇒
+      1001 !! "1001st" |> { (src, tgt) =>
         Inflector.ordinalize(src) must_== tgt
       }
   }
@@ -121,7 +121,7 @@ class InflectorSpec extends Specification with DataTables {
       "customer_first_name" !! "CustomerFirstName" |
       "customer__first_name" !! "CustomerFirstName" |
       "customer_first_name_goes_here" !! "CustomerFirstNameGoesHere" |
-      "customer name" !! "Customer name" |> { (src, tgt) ⇒
+      "customer name" !! "Customer name" |> { (src, tgt) =>
         Inflector.pascalize(src) must_== tgt
       }
   }
@@ -138,7 +138,7 @@ class InflectorSpec extends Specification with DataTables {
       "customer_first_name" !! "customerFirstName" |
       "customer__first_name" !! "customerFirstName" |
       "customer_first_name_goes_here" !! "customerFirstNameGoesHere" |
-      "customer name" !! "customer name" |> { (src, tgt) ⇒
+      "customer name" !! "customer name" |> { (src, tgt) =>
         Inflector.camelize(src) must_== tgt
       }
   }
@@ -151,7 +151,7 @@ class InflectorSpec extends Specification with DataTables {
       "sometitle" !! "Sometitle" |
       "some-title: The begining" !! "Some Title: The Begining" |
       "some_title:_the_begining" !! "Some Title: The Begining" |
-      "some title: The_begining" !! "Some Title: The Begining" |> { (src, tgt) ⇒
+      "some title: The_begining" !! "Some Title: The Begining" |> { (src, tgt) =>
         Inflector.titleize(src) must_== tgt
       }
   }
@@ -164,7 +164,7 @@ class InflectorSpec extends Specification with DataTables {
       "SOMETITLE" !! "sOMETITLE" |
       "someTitle" !! "someTitle" |
       "some title goes here" !! "some title goes here" |
-      "some TITLE" !! "some TITLE" |> { (src, tgt) ⇒
+      "some TITLE" !! "some TITLE" |> { (src, tgt) =>
         Inflector.uncapitalize(src) must_== tgt
       }
   }
@@ -175,15 +175,15 @@ class InflectorSpec extends Specification with DataTables {
       "SomeTitle" !! "some_title" |
       "some title" !! "some_title" |
       "some title that will be underscored" !! "some_title_that_will_be_underscored" |
-      "SomeTitleThatWillBeUnderscored" !! "some_title_that_will_be_underscored" |> { (src, tgt) ⇒
+      "SomeTitleThatWillBeUnderscored" !! "some_title_that_will_be_underscored" |> { (src, tgt) =>
         Inflector.underscore(src) must_== tgt
       }
   }
 
-  def pluralization = pluralAndSingular { (left, right) ⇒ Inflector.pluralize(left) must_== right }
-  def singularization = pluralAndSingular { (left, right) ⇒ Inflector.singularize(right) must_== left }
+  def pluralization = pluralAndSingular { (left, right) => Inflector.pluralize(left) must_== right }
+  def singularization = pluralAndSingular { (left, right) => Inflector.singularize(right) must_== left }
 
-  def pluralAndSingular(execFn: (String, String) ⇒ Result) = {
+  def pluralAndSingular(execFn: (String, String) => Result) = {
     "singular" || "plural" |
       "search" !! "searches" |
       "switch" !! "switches" |
